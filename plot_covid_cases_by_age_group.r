@@ -1,9 +1,15 @@
 library(tidyverse)
 library(ggplot2)
 
+# set time zone to NZT to make sure we retrieve the correct date
+Sys.setenv(TZ='Pacific/Auckland')
+
 # function definitions
 
-load_data <- function(url) {
+load_data <- function() {
+  # for now this will only work once the day's figures have been released
+  url <- paste('https://www.health.govt.nz/system/files/documents/pages/', Sys.Date(), '.csv', sep='')
+  print(url)
   filename <- sapply(str_split(url, '/'), tail, 1)
   download.file(url, filename)
   data <- read.csv(filename)
@@ -20,6 +26,6 @@ plot_data <- function(data) {
   return(p)
 }
 
-data <- load_data('https://www.health.govt.nz/system/files/documents/pages/covid_cases_2022-03-03.csv')
+data <- load_data()
 p <- plot_data(data)
 print(p)
