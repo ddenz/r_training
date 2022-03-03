@@ -9,7 +9,6 @@ Sys.setenv(TZ='Pacific/Auckland')
 load_data <- function() {
   # for now this will only work once the day's figures have been released
   url <- paste('https://www.health.govt.nz/system/files/documents/pages/', Sys.Date(), '.csv', sep='')
-  print(url)
   filename <- sapply(str_split(url, '/'), tail, 1)
   download.file(url, filename)
   data <- read.csv(filename)
