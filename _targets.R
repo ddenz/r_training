@@ -1,6 +1,6 @@
 library(targets)
 
-source("plot_covid_cases_by_age_group.r")
+source("plot_covid_cases_by_age_group.R")
 
 options(tidyverse.quiet = TRUE)
 
@@ -17,6 +17,6 @@ list(
   ),
   tar_target(
     display,
-    show(plot)
+    print(plot)
   )
 )
