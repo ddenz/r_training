@@ -7,9 +7,10 @@ Sys.setenv(TZ='Pacific/Auckland')
 
 load_data <- function() {
   # for now this will only work once the day's figures have been released
-  url <- paste('https://www.health.govt.nz/system/files/documents/pages/', Sys.Date(), '.csv', sep='')
-  filename <- sapply(str_split(url, '/'), tail, 1)
-  download.file(url, filename)
+  #url <- paste('https://www.health.govt.nz/system/files/documents/pages/', Sys.Date(), '.csv', sep='')
+  #filename <- sapply(str_split(url, '/'), tail, 1)
+  filename <- "covid_cases_2022-03-02.csv"
+  #download.file(url, filename)
   data <- read.csv(filename)
   return(data)
 }
@@ -40,5 +41,5 @@ data <- load_data()
 p <- plot_data(data)
 print(p)
 
-p <- plot_time_series(data)
-print(p)
+#p <- plot_time_series(data)
+#print(p)
